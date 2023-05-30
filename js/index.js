@@ -4,9 +4,10 @@ window.addEventListener('DOMContentLoaded', () => {
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
+    let timer = (null);
   });
 
-  let timer = null;
+  
 
   const quizArray = [
     {
@@ -20,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
          'Pacific Ocean'],
       a: 3,
     },
+
     {
       q: 'What is the capital of Australia?',
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
@@ -82,7 +84,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#score').textContent = `Score: ${score}`;
     highlightCorrectAnswers();
   });
-//
+//restart button
   const resetButton = document.querySelector('#btnReset');
   resetButton.addEventListener('click', () => {
     window.location.reload();

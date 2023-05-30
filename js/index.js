@@ -1,10 +1,12 @@
-//
+// Start button
 window.addEventListener('DOMContentLoaded', () => {
   const start = document.querySelector('#start');
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
   });
+
+  let timer = null;
 
   const quizArray = [
     {
@@ -72,14 +74,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     return score;
   };
-
+// submit button
   const submitButton = document.querySelector('#btnSubmit');
   submitButton.addEventListener('click', () => {
     const score = calculateScore();
+    clearInterval(timer);
     document.querySelector('#score').textContent = `Score: ${score}`;
     highlightCorrectAnswers();
   });
-
+//
   const resetButton = document.querySelector('#btnReset');
   resetButton.addEventListener('click', () => {
     window.location.reload();
@@ -89,7 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let seconds = 60;
     const timeDisplay = document.querySelector('#time');
 
-    const timer = setInterval(() => {
+      timer = setInterval(() => {
       seconds--;
       timeDisplay.textContent = formatTime(seconds);
 
